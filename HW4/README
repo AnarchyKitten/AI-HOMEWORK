@@ -1,0 +1,53 @@
+Artificial Intelligence
+Genetic Algorithms Assignment
+The Knapsack Problem
+Yuchen Yang and Isabella Forman
+November 22, 2019
+
+How to run the program:
+python Genetic.py
+
+To test the program with different values:
+At the top of the Genetic class, you may change the integers in the Weight and
+Value lists. You may also change the backpack Limit value.
+
+1. Define the problem as a genetic algorithm
+To represent the Knapsack Problem as a genetic algorithm problem, chromosomes
+represent potential box selections to be placed in the backpack. The problem
+starts with an array of box weights and an array of box values. A number of 
+chromosomes are randomly generated to start off the problem (this is the random
+population). The fitness of an individual is defined as the sum of the 
+box values for the selected boxes specified by that individual's chromosome if
+the sum of the weights of the selected boxes is less than the weight limit. If
+the sum of the weights of the selected boxes goes above the weight limit, then
+that individual's fitness is 0. At each step of the genetic algorithm, the half 
+of the population with the greatest fitness values are kept, while the less fit 
+half of the population is culled and removed. The mutation and crossover 
+functions are called on the fit individuals in the population to generate the 
+next generation. The best individual at each step is defined as the inidividual 
+with the best fitness, or the maximum sum of box values.
+
+2. Provide the genome for the problem
+A chromosome is represented as an array that is the length of the box 
+weight/value array. A 1 in the chromosome means that the box at that position 
+in the box weight/value array was selected to be placed in the backpack, and 
+a 0 means that that box does not go in the backpack.
+
+3. Define all the fringe operations
+The fringe operations are the mutation and crossover functions. The mutation
+function randomly selects one index of the chromosome and swaps its value, so if
+there is a 1 at that index, it is changed to a 0, and if it is a 0, it is
+changed to a 1.
+The crossover function takes two chromosomes and produces a new chromosome
+that is made by combining the first portion of the first chromosome, up until 
+a randomly generated index i, with the second portion of the second chromosome,
+from i until the end.
+
+4. Cull your population by 50% at every generation
+The culling process happens by sorting the current population according to
+fitness value (where fitness value is the sum of the values of the boxes, for
+any given selection of boxes). The half of the population with the highest 
+fitness values are kept, while the half of the population with the lower 
+fitness values are removed. 
+
+

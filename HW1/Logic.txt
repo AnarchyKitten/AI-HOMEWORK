@@ -1,0 +1,64 @@
+BATTERY_LEVEL=100
+SPOT=TRUE
+GENERAL=TRUE
+DUSTY_SPOT=FALSE
+HOME_PATH
+
+class Roomba_roaming
+    function run
+        WHILE(TRUE):
+            function Back_To_Dock
+                IF BATTERY_LEVEL<30%:
+                    THEN HOME_PATH=FIND_HOME()
+                    GO_HOME(HOME_PATH)
+                    DOCK()
+                    RETURN TRUE
+                ELSE:
+                    RETURN FALSE
+            IF Back_To_Dock == TRUE:
+                RETURN TRUE
+            
+            function Do_Cleaning
+                function Cleaning_Spot
+                    IF SPOT == TRUE:
+                        Loop FOR 20s:
+                            CLEAN_SPOT()
+                        DONE_SPOT(SPOT)
+                        RETURN TRUE
+                    ELSE:
+                        RETURN FALSE
+
+                IF Cleaning_Spot == TRUE:
+                    RETURN TRUE
+                
+                function General_Cleaning
+                    IF GENERAL == TRUE:
+                        Loop Until Fail:
+                            IF BATTERY_LEVEL>=30%:
+
+                                function Dusty_Spot_Cleaning
+                                    IF DUSTY_SPOT == TRUE:
+                                        Loop For 35s:
+                                            CLEAN_SPOT()
+                                        RETURN TRUE
+                                    CLEAN()
+                                    RETURN TRUE
+                                IF Dusty_Spot_Cleaning == TRUE:
+                                    RETURN TRUE
+                                ELSE:
+                                    RETURN FALSE
+                            ELSE RETURN FALSE
+                        DONE_GENERAL(GENERAL)
+                        RETURN TRUE
+                    ELSE RETURN FALSE
+                IF General_Cleaning == TRUE:
+                    RETURN TRUE
+            IF Do_Cleaning == TRUE:
+                RETURN TRUE
+            
+            function Do_Nothing
+                DO_NOTHING()
+            IF Do_Nothing == TRUE:
+                RETURN TRUE
+
+            SLEEP FOR 1 S

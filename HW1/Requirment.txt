@@ -1,0 +1,36 @@
+behavior tree
+
+priority-----Always go through 1,2,3 even there is a node return running.(If sequence than go to the tree contains running node)
+
+Node Structure-----Each judgement/movement is a node and organize in Structure.(photo)
+
+class Node
+{
+    children=[]
+
+}
+class composite extends Node
+class sequence extend composite
+class selection extend composite
+
+class Task extends Node   (generic structure)
+class Find_Home extends Task
+
+Find_Home
+{
+    run()
+    {
+        actually run the tasks.
+    }
+}
+
+
+Readme->Put member's name
+
+
+
+Blackboard---pass whatever input into the behavior tree
+
+dusty spot---random generator to generate the dusty spot.
+
+recharge to 100%(any number) before go back to work.
